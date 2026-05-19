@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const insights = [
   {
     category: 'Business Software',
@@ -66,12 +68,12 @@ export default function Insights() {
               <p className="mt-4 text-base font-medium leading-7 text-[#0F172A]/70 dark:text-white/70">
                 {insight.summary}
               </p>
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold uppercase tracking-[0.16em] text-[#2563EB] dark:text-[#38BDF8]"
               >
                 Discuss This <span className="text-[#38BDF8]">→</span>
-              </a>
+              </Link>
             </article>
           ))}
         </div>
@@ -85,12 +87,12 @@ export default function Insights() {
               We can help you choose the right software features before
               development starts.
             </h2>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex justify-center bg-[#2563EB] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#FFFFFF] transition-colors hover:bg-[#38BDF8] hover:text-[#0F172A]"
             >
               Ask VizEdge <span className="ml-2">→</span>
-            </a>
+            </Link>
           </div>
         </section>
       </section>

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const products = [
   {
     title: 'CRM Software',
@@ -102,12 +104,12 @@ export default function Services() {
               panels, reports, user roles, database, and deployment support.
             </p>
           </div>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex justify-center bg-[#2563EB] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#FFFFFF] transition-colors hover:bg-[#38BDF8] hover:text-[#0F172A]"
           >
             Discuss Project <span className="ml-2">→</span>
-          </a>
+          </Link>
         </section>
       </section>
     </main>

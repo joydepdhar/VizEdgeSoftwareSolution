@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const modules = [
   'Sales & CRM',
   'Inventory',
@@ -42,18 +44,18 @@ export default function Odoo() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="bg-[#2563EB] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#FFFFFF] shadow-lg shadow-[#2563EB]/25 transition-colors hover:bg-[#0F172A] dark:hover:bg-[#38BDF8] dark:hover:text-[#0F172A]"
             >
               Discuss Odoo Project <span className="ml-2 text-[#38BDF8]">→</span>
-            </a>
-            <a
-              href="/services"
+            </Link>
+            <Link
+              to="/services"
               className="border border-[#0F172A]/15 px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#0F172A] transition-colors hover:border-[#38BDF8] hover:text-[#2563EB] dark:border-white/15 dark:text-white dark:hover:text-[#38BDF8]"
             >
               View Services
-            </a>
+            </Link>
           </div>
         </div>
 

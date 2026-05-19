@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const caseStudies = [
   {
     industry: 'Sales Operations',
@@ -86,12 +88,12 @@ export default function CaseStudies() {
             <h2 className="max-w-3xl text-3xl font-black leading-tight text-[#FFFFFF]">
               Have a business workflow that needs custom software?
             </h2>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex justify-center bg-[#2563EB] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#FFFFFF] transition-colors hover:bg-[#38BDF8] hover:text-[#0F172A]"
             >
               Start Discussion <span className="ml-2">→</span>
-            </a>
+            </Link>
           </div>
         </section>
       </section>

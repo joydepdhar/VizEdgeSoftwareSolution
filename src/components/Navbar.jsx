@@ -1,9 +1,12 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import logo from '../assets/Profile_Logo.png'
 
 export default function Navbar({ isNight, onThemeToggle }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const navRef = useRef(null)
+  const location = useLocation()
 
   const linkClass = ({ isActive }) =>
     [
@@ -26,6 +29,7 @@ export default function Navbar({ isNight, onThemeToggle }) {
     'Manufacturing & Distribution',
   ]
   const navLinks = [
+    { to: '/about', label: 'About' },
     { to: '/case-studies', label: 'Case Studies' },
     { to: '/odoo', label: 'Odoo' },
     { to: '/insights', label: 'Insights' },
@@ -43,13 +47,42 @@ export default function Navbar({ isNight, onThemeToggle }) {
         : 'text-[#0F172A] hover:text-[#2563EB] dark:text-white dark:hover:text-[#38BDF8]',
     ].join(' ')
 
+  useEffect(() => {
+    if (!isServicesOpen) {
+      return undefined
+    }
+
+    const handlePointerDown = (event) => {
+      if (!navRef.current?.contains(event.target)) {
+        setIsServicesOpen(false)
+      }
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsServicesOpen(false)
+      }
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isServicesOpen])
+
   return (
-    <nav className="sticky top-0 z-50 border-b border-[#0F172A]/10 bg-[#FFFFFF] px-4 py-3 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-[#07111F] sm:px-6 lg:py-4">
+    <nav ref={navRef} className="sticky top-0 z-50 border-b border-[#0F172A]/10 bg-[#FFFFFF] px-4 py-3 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-[#07111F] sm:px-6 lg:py-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 md:gap-8">
         <NavLink
           to="/"
           className="flex min-w-0 items-center gap-2 text-xl font-extrabold text-[#0F172A] transition-colors dark:text-white"
-          onClick={() => setIsMenuOpen(false)}
+          onClick={() => {
+            setIsMenuOpen(false)
+            setIsServicesOpen(false)
+          }}
         >
           <img
             src={logo}
@@ -60,25 +93,34 @@ export default function Navbar({ isNight, onThemeToggle }) {
         </NavLink>
 
         <ul className="hidden items-center gap-10 lg:flex xl:gap-14">
-          <li className="group">
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                [
-                  'inline-flex items-center gap-2 px-4 py-3 text-sm font-bold tracking-wide transition-colors',
-                  isActive
-                    ? 'bg-[#2563EB]/10 text-[#2563EB] dark:bg-[#38BDF8]/10 dark:text-[#38BDF8]'
-                    : 'text-[#0F172A] hover:bg-[#2563EB]/10 hover:text-[#2563EB] dark:text-white dark:hover:bg-[#38BDF8]/10 dark:hover:text-[#38BDF8]',
-                ].join(' ')
-              }
+          <li>
+            <button
+              type="button"
+              className={[
+                'inline-flex items-center gap-2 px-4 py-3 text-sm font-bold tracking-wide transition-colors',
+                location.pathname === '/services' || isServicesOpen
+                  ? 'bg-[#2563EB]/10 text-[#2563EB] dark:bg-[#38BDF8]/10 dark:text-[#38BDF8]'
+                  : 'text-[#0F172A] hover:bg-[#2563EB]/10 hover:text-[#2563EB] dark:text-white dark:hover:bg-[#38BDF8]/10 dark:hover:text-[#38BDF8]',
+              ].join(' ')}
+              aria-expanded={isServicesOpen}
+              aria-controls="services-mega-menu"
+              onClick={() => setIsServicesOpen((value) => !value)}
             >
                 Services
-              <span className="text-lg leading-none text-[#38BDF8] transition-transform group-hover:rotate-180">
+              <span className={['text-lg leading-none text-[#38BDF8] transition-transform', isServicesOpen ? 'rotate-180' : ''].join(' ')}>
                 ⌃
               </span>
-            </NavLink>
+            </button>
 
-            <div className="invisible absolute left-0 top-full w-full translate-y-3 border-t border-[#0F172A]/10 bg-[#FFFFFF] opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-white/10 dark:bg-[#07111F]">
+            <div
+              id="services-mega-menu"
+              className={[
+                'absolute left-0 top-full w-full border-t border-[#0F172A]/10 bg-[#FFFFFF] shadow-xl transition-all duration-200 dark:border-white/10 dark:bg-[#07111F]',
+                isServicesOpen
+                  ? 'visible translate-y-0 opacity-100'
+                  : 'invisible translate-y-3 opacity-0',
+              ].join(' ')}
+            >
               <div className="mx-auto grid max-w-7xl grid-cols-[1.25fr_1fr_1fr] gap-16 px-6 py-16 text-left">
                 <div>
                   <p className="mb-8 text-xs font-extrabold uppercase tracking-[0.32em] text-[#38BDF8]">
@@ -90,6 +132,7 @@ export default function Navbar({ isNight, onThemeToggle }) {
                       <NavLink
                         key={service}
                         to="/services"
+                        onClick={() => setIsServicesOpen(false)}
                         className="block py-5 text-base font-extrabold text-[#0F172A] transition-colors hover:text-[#2563EB] dark:text-white dark:hover:text-[#38BDF8]"
                       >
                         {service}
@@ -99,6 +142,7 @@ export default function Navbar({ isNight, onThemeToggle }) {
 
                   <NavLink
                     to="/services"
+                    onClick={() => setIsServicesOpen(false)}
                     className="mt-8 inline-flex items-center gap-3 text-sm font-extrabold uppercase tracking-[0.2em] text-[#0F172A]/65 transition-colors hover:text-[#2563EB] dark:text-white/65 dark:hover:text-[#38BDF8]"
                   >
                     View All Services <span className="text-lg text-[#38BDF8]">→</span>
@@ -115,6 +159,7 @@ export default function Navbar({ isNight, onThemeToggle }) {
                       <NavLink
                         key={industry}
                         to="/services"
+                        onClick={() => setIsServicesOpen(false)}
                         className="block text-base font-extrabold text-[#0F172A]/65 transition-colors hover:text-[#2563EB] dark:text-white/65 dark:hover:text-[#38BDF8]"
                       >
                         {industry}
@@ -136,6 +181,7 @@ export default function Navbar({ isNight, onThemeToggle }) {
                   </p>
                   <NavLink
                     to="/contact"
+                    onClick={() => setIsServicesOpen(false)}
                     className="mt-8 flex items-center justify-center gap-3 bg-[#FFFFFF] px-6 py-4 text-xs font-extrabold uppercase tracking-[0.14em] text-[#0F172A] transition-colors hover:bg-[#38BDF8]"
                   >
                     Schedule Call <span className="text-base">→</span>
@@ -146,7 +192,12 @@ export default function Navbar({ isNight, onThemeToggle }) {
           </li>
           {navLinks.map((link) => (
             <li key={link.to}>
-              <NavLink key={link.to} to={link.to} className={linkClass}>
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={linkClass}
+                onClick={() => setIsServicesOpen(false)}
+              >
                 {link.label}
               </NavLink>
             </li>
@@ -194,6 +245,7 @@ export default function Navbar({ isNight, onThemeToggle }) {
           </button>
           <NavLink
             to="/contact"
+            onClick={() => setIsServicesOpen(false)}
             className="hidden bg-[#0F172A] px-7 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-[#FFFFFF] shadow-lg shadow-[#0F172A]/20 transition-colors hover:bg-[#2563EB] dark:bg-[#2563EB] dark:shadow-[#2563EB]/20 dark:hover:bg-[#38BDF8] dark:hover:text-[#0F172A] lg:inline-flex"
           >
             Contact Us <span className="ml-2 text-base leading-none text-[#38BDF8] dark:text-white">→</span>
