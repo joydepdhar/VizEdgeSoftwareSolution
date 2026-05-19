@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/Profile_Logo.png'
 
 export default function Navbar({ isNight, onThemeToggle }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const linkClass = ({ isActive }) =>
     [
       'text-sm font-bold tracking-wide transition-colors',
@@ -22,13 +25,31 @@ export default function Navbar({ isNight, onThemeToggle }) {
     'Retail & E-commerce',
     'Manufacturing & Distribution',
   ]
+  const navLinks = [
+    { to: '/case-studies', label: 'Case Studies' },
+    { to: '/odoo', label: 'Odoo' },
+    { to: '/insights', label: 'Insights' },
+  ]
+  const mobileLinks = [
+    { to: '/', label: 'Home', end: true },
+    { to: '/services', label: 'Services' },
+    ...navLinks,
+  ]
+  const mobileLinkClass = ({ isActive }) =>
+    [
+      'flex min-h-12 items-center justify-between border-b border-[#0F172A]/10 py-3 text-left text-base font-extrabold transition-colors dark:border-white/10',
+      isActive
+        ? 'text-[#2563EB] dark:text-[#38BDF8]'
+        : 'text-[#0F172A] hover:text-[#2563EB] dark:text-white dark:hover:text-[#38BDF8]',
+    ].join(' ')
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[#0F172A]/10 bg-[#FFFFFF]/95 px-6 py-4 shadow-sm backdrop-blur transition-colors duration-300 dark:border-white/10 dark:bg-[#07111F]/92">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-8">
+    <nav className="sticky top-0 z-50 border-b border-[#0F172A]/10 bg-[#FFFFFF] px-4 py-3 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-[#07111F] sm:px-6 lg:py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 md:gap-8">
         <NavLink
           to="/"
-          className="flex items-center gap-2 text-xl font-extrabold text-[#0F172A] transition-colors dark:text-white"
+          className="flex min-w-0 items-center gap-2 text-xl font-extrabold text-[#0F172A] transition-colors dark:text-white"
+          onClick={() => setIsMenuOpen(false)}
         >
           <img
             src={logo}
@@ -38,7 +59,7 @@ export default function Navbar({ isNight, onThemeToggle }) {
         VizEdge
         </NavLink>
 
-        <ul className="hidden items-center gap-14 md:flex">
+        <ul className="hidden items-center gap-10 lg:flex xl:gap-14">
           <li className="group">
             <NavLink
               to="/services"
@@ -123,24 +144,16 @@ export default function Navbar({ isNight, onThemeToggle }) {
               </div>
             </div>
           </li>
-          <li>
-            <NavLink to="/case-studies" className={linkClass}>
-              Case Studies
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/odoo" className={linkClass}>
-              Odoo
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/insights" className={linkClass}>
-              Insights
-            </NavLink>
-          </li>
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <NavLink key={link.to} to={link.to} className={linkClass}>
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             type="button"
             onClick={onThemeToggle}
@@ -181,10 +194,78 @@ export default function Navbar({ isNight, onThemeToggle }) {
           </button>
           <NavLink
             to="/contact"
-            className="bg-[#0F172A] px-7 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-[#FFFFFF] shadow-lg shadow-[#0F172A]/20 transition-colors hover:bg-[#2563EB] dark:bg-[#2563EB] dark:shadow-[#2563EB]/20 dark:hover:bg-[#38BDF8] dark:hover:text-[#0F172A]"
+            className="hidden bg-[#0F172A] px-7 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-[#FFFFFF] shadow-lg shadow-[#0F172A]/20 transition-colors hover:bg-[#2563EB] dark:bg-[#2563EB] dark:shadow-[#2563EB]/20 dark:hover:bg-[#38BDF8] dark:hover:text-[#0F172A] lg:inline-flex"
           >
             Contact Us <span className="ml-2 text-base leading-none text-[#38BDF8] dark:text-white">→</span>
           </NavLink>
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((value) => !value)}
+            className="inline-flex h-11 items-center justify-center gap-2 border border-[#0F172A]/10 bg-[#F8FBFF] px-3 text-[#0F172A] transition-colors hover:border-[#2563EB]/30 hover:text-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-[#38BDF8]/40 dark:hover:text-[#38BDF8] dark:focus:ring-[#38BDF8]/35 lg:hidden"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-controls="mobile-navigation"
+          >
+            <svg
+              aria-hidden="true"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              {isMenuOpen ? (
+                <path
+                  d="m6 6 12 12M18 6 6 18"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                />
+              ) : (
+                <path
+                  d="M4 7h16M4 12h16M4 17h16"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                />
+              )}
+            </svg>
+            <span className="hidden text-xs font-extrabold uppercase tracking-[0.14em] sm:inline">
+              Menu
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-navigation"
+        className={[
+          'absolute left-0 right-0 top-full grid overflow-hidden border-b border-[#0F172A]/10 bg-[#FFFFFF] px-4 shadow-xl shadow-[#0F172A]/15 transition-all duration-200 dark:border-white/10 dark:bg-[#07111F] sm:px-6 lg:hidden',
+          isMenuOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+        ].join(' ')}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="mx-auto max-w-7xl py-3 text-left">
+            <div className="grid">
+              {mobileLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  end={link.end}
+                  className={mobileLinkClass}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label} <span className="text-[#38BDF8]">→</span>
+                </NavLink>
+              ))}
+            </div>
+
+            <NavLink
+              to="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-4 flex min-h-12 items-center justify-center bg-[#2563EB] px-5 py-3 text-xs font-extrabold uppercase tracking-[0.14em] text-[#FFFFFF] shadow-lg shadow-[#2563EB]/25 transition-colors hover:bg-[#0F172A] dark:hover:bg-[#38BDF8] dark:hover:text-[#0F172A]"
+            >
+              Contact Us <span className="ml-2 text-base leading-none">→</span>
+            </NavLink>
+          </div>
         </div>
       </div>
     </nav>
