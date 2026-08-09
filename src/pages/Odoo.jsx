@@ -1,92 +1,66 @@
 import { Link } from 'react-router-dom'
 
-const modules = [
-  'Sales & CRM',
-  'Inventory',
-  'Accounting',
-  'HR & Payroll',
-  'Purchase',
-  'Manufacturing',
-]
+const modules = ['Sales', 'CRM', 'Inventory', 'Purchase', 'Accounting', 'Website', 'eCommerce', 'Manufacturing', 'Project', 'HR']
 
-const features = [
+const capabilities = [
   {
-    title: 'Odoo Customization',
-    description:
-      'Adapt Odoo modules, forms, workflows, fields, reports, and user roles for your business process.',
+    title: 'Custom Odoo Development',
+    description: 'Custom modules, workflows, business logic, views, reports, and automated processes tailored to your daily operations.',
   },
   {
-    title: 'ERP Implementation',
-    description:
-      'Plan, configure, migrate data, and launch Odoo for sales, inventory, accounts, HR, and operations.',
+    title: 'Odoo Version Upgrades',
+    description: 'Odoo version upgrades and migration to the latest supported release, with careful review of compatibility and business impact.',
   },
   {
-    title: 'Reports & Dashboards',
-    description:
-      'Build useful ERP reports, KPI dashboards, and business insights for faster decisions.',
+    title: 'Functional Development & Customization',
+    description: 'Configuration and customization across sales, CRM, inventory, accounting, website, eCommerce, manufacturing, project, HR, and other Odoo applications.',
+  },
+  {
+    title: 'Unfinished Odoo Projects',
+    description: 'Have an unfinished Odoo project? We can review, fix, complete, and move it toward production with a practical, focused approach.',
   },
 ]
 
 export default function Odoo() {
   return (
-    <main className="bg-[#FFFFFF] text-left transition-colors dark:bg-[#050B18]">
-      <section className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[1fr_0.9fr]">
-        <div>
-          <p className="mb-5 text-sm font-extrabold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#38BDF8]">
-            Odoo ERP Solutions
-          </p>
-          <h1 className="text-5xl font-black leading-tight text-[#0F172A] md:text-6xl dark:text-white">
-            Odoo systems customized for your business.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg font-medium leading-8 text-[#0F172A]/70 dark:text-white/70">
-            VizEdge helps businesses implement, customize, and extend Odoo ERP
-            for daily operations, reporting, and long-term growth.
-          </p>
+    <main className="bg-white text-slate-900">
+      <section className="section-shell py-20">
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-start">
+          <div>
+            <p className="text-sm font-black uppercase tracking-[0.26em] text-blue-700">Odoo Enterprise</p>
+            <h1 className="mt-4 text-4xl font-black tracking-tight text-slate-900 sm:text-5xl">Odoo support that helps businesses run more clearly and more efficiently.</h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+              JR_VizEdge supports businesses with custom Odoo development, functional improvements, integrations, and project recovery for incomplete or failed implementations.
+            </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              to="/contact"
-              className="bg-[#2563EB] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#FFFFFF] shadow-lg shadow-[#2563EB]/25 transition-colors hover:bg-[#0F172A] dark:hover:bg-[#38BDF8] dark:hover:text-[#0F172A]"
-            >
-              Discuss Odoo Project <span className="ml-2 text-[#38BDF8]">→</span>
-            </Link>
-            <Link
-              to="/services"
-              className="border border-[#0F172A]/15 px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#0F172A] transition-colors hover:border-[#38BDF8] hover:text-[#2563EB] dark:border-white/15 dark:text-white dark:hover:text-[#38BDF8]"
-            >
-              View Services
-            </Link>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link to="/contact" className="primary-button bg-[#0f172a] text-white hover:bg-[#2563eb]">
+                Discuss Odoo Project
+              </Link>
+              <Link to="/services" className="secondary-button">
+                View Services
+              </Link>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-slate-200 bg-slate-900 p-6 text-white shadow-xl">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-sky-300">Core Modules</p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {modules.map((module) => (
+                <div key={module} className="rounded-2xl border border-slate-700 bg-slate-800 p-4 text-sm font-bold text-slate-100">
+                  {module}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="bg-[#0F172A] bg-[radial-gradient(circle_at_1px_1px,rgba(56,189,248,0.24)_1px,transparent_0)] [background-size:20px_20px] p-8 text-[#FFFFFF] shadow-2xl shadow-[#0F172A]/20">
-          <p className="text-sm font-extrabold uppercase tracking-[0.24em] text-[#38BDF8]">
-            ERP Modules
-          </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {modules.map((module) => (
-              <div key={module} className="border border-white/10 p-4">
-                <p className="font-extrabold text-[#FFFFFF]">{module}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="grid gap-6 md:grid-cols-3">
-          {features.map((feature) => (
-            <article
-              key={feature.title}
-              className="border border-[#0F172A]/10 bg-white p-7 shadow-sm dark:border-white/10 dark:bg-[#0B1A2D]"
-            >
-              <div className="mb-6 h-1 w-14 bg-[#38BDF8]" />
-              <h2 className="text-2xl font-black text-[#0F172A] dark:text-white">
-                {feature.title}
-              </h2>
-              <p className="mt-4 text-base font-medium leading-7 text-[#0F172A]/70 dark:text-white/70">
-                {feature.description}
-              </p>
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          {capabilities.map((item) => (
+            <article key={item.title} className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+              <div className="mb-5 h-1 w-12 rounded-full bg-sky-400" />
+              <h2 className="text-2xl font-black text-slate-900">{item.title}</h2>
+              <p className="mt-4 text-base leading-7 text-slate-600">{item.description}</p>
             </article>
           ))}
         </div>

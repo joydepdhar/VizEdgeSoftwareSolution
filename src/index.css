@@ -48,13 +48,30 @@ body {
   min-width: 320px;
   min-height: 100svh;
   background: var(--bg);
+  color: var(--text-h);
 }
 
 #root {
   width: 100%;
   min-height: 100svh;
-  text-align: center;
+  text-align: left;
   box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  font: inherit;
 }
 
 @layer base {

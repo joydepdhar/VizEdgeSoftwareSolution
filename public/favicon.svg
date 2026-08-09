@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">JR_VizEdge</title>
+  <desc id="desc">JR_VizEdge brand icon</desc>
+  <rect width="128" height="128" rx="28" fill="#0F172A"/>
+  <path d="M28 92V36h18l16 20 16-20h18v56H78V63L62 82 46 63v29H28Z" fill="#7DD3FC"/>
+  <path d="M82 36h18v56H82V36Z" fill="#FFFFFF" opacity="0.9"/>
+</svg>

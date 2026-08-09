@@ -1,327 +1,210 @@
 import { Link } from 'react-router-dom'
 
-const serviceLinks = [
-  'CRM Software',
-  'HRM Software',
-  'Smart Inventory',
-  'Power BI Dashboards',
-]
+const serviceHighlights = ['Website Development', 'Custom Software', 'Odoo Enterprise', 'SEO']
 
-const services = [
+const serviceCards = [
   {
-    title: 'Custom Business Software',
+    title: 'Website Development',
     description:
-      'CRM, HRM, POS, accounting, and management systems built for your workflow.',
+      'Professional business websites designed for clarity, trust, and conversion.',
+    points: ['Business websites', 'Maintenance', 'SEO', 'React & Django'],
   },
   {
-    title: 'Web & Desktop Applications',
+    title: 'Custom Software',
     description:
-      'Modern web apps and reliable desktop software for daily business operations.',
+      'Digital systems designed around the client’s actual business workflow and operations.',
+    points: ['CRM', 'Inventory', 'Dashboards', 'Automation'],
   },
   {
-    title: 'Data Analysis & Power BI',
+    title: 'Odoo Enterprise',
     description:
-      'Interactive dashboards, KPI reports, and analytics for better decisions.',
-  },
-]
-
-const showcaseProjects = [
-  {
-    title: 'CRM Sales Pipeline',
-    category: 'Customer Management',
-    metric: '286',
-    label: 'active leads',
-    description:
-      'A focused CRM workspace for lead tracking, follow-ups, customer history, and sales team activity.',
+      'Custom Odoo development, upgrades, and support for businesses that need more from their ERP.',
+    points: ['Custom modules', 'Version upgrades', 'Integrations', 'Unfinished projects'],
   },
   {
-    title: 'Smart Inventory Control',
-    category: 'Operations',
-    metric: '12',
-    label: 'stock alerts',
+    title: 'SEO',
     description:
-      'Inventory movement, purchase records, supplier data, and low-stock alerts inside one business dashboard.',
-  },
-  {
-    title: 'Power BI Performance View',
-    category: 'Analytics',
-    metric: '7',
-    label: 'KPI reports',
-    description:
-      'Decision-ready dashboards that turn sales, stock, finance, and team data into clear monthly insights.',
+      'Technical and on-page improvements that strengthen visibility and search performance.',
+    points: ['Technical SEO', 'On-page optimization', 'Performance', 'Search structure'],
   },
 ]
 
-const workEthics = [
+const process = [
   {
-    title: 'We Understand First',
-    description:
-      'Every project starts with your workflow, team roles, reporting needs, and the real problems slowing daily work.',
+    title: 'Understand the business',
+    description: 'We identify the real needs, constraints, and goals before planning the solution.',
   },
   {
-    title: 'We Build Clearly',
-    description:
-      'Interfaces, databases, admin panels, and reports are planned so your team can use the system without confusion.',
+    title: 'Design a practical system',
+    description: 'We define workflows, interfaces, and technical requirements around your operations.',
   },
   {
-    title: 'We Stay Responsible',
-    description:
-      'VizEdge works with practical timelines, direct communication, testing, deployment support, and long-term care.',
+    title: 'Build and improve',
+    description: 'We implement the project with a clear process, testing, and support for production use.',
   },
-]
-
-const heroStats = [
-  { value: 'CRM', label: 'Sales pipeline systems' },
-  { value: 'HRM', label: 'Team management tools' },
-  { value: 'BI', label: 'Decision dashboards' },
 ]
 
 export default function Hero() {
   return (
-    <main className="overflow-hidden bg-[#FFFFFF] text-left transition-colors duration-300 dark:bg-[#050B18]">
-      <section aria-label="Hero Section" className="relative mx-auto grid min-h-[calc(100svh-70px)] max-w-[88rem] items-center gap-12 px-6 py-16 sm:py-20 lg:min-h-[calc(100svh-84px)] lg:grid-cols-[1.02fr_0.98fr] lg:gap-16 lg:px-8 lg:py-24 xl:gap-18">
-        <div className="pointer-events-none absolute right-0 top-8 h-80 w-80 bg-[#38BDF8]/20 blur-3xl dark:bg-[#38BDF8]/15" />
-        <div className="pointer-events-none absolute bottom-8 left-0 h-96 w-96 bg-[#2563EB]/10 blur-3xl dark:bg-[#2563EB]/20" />
+    <main className="bg-white text-slate-900">
+      <section className="section-shell relative overflow-hidden py-16 sm:py-20 lg:py-24">
+        <div className="absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-sky-100 blur-3xl" aria-hidden="true" />
+        <div className="absolute -right-10 bottom-0 h-72 w-72 rounded-full bg-blue-100 blur-3xl" aria-hidden="true" />
 
-        <div className="relative z-10">
-          <p className="mb-6 inline-flex border border-[#2563EB]/15 bg-[#2563EB]/5 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.22em] text-[#2563EB] dark:border-[#38BDF8]/30 dark:bg-[#38BDF8]/10 dark:text-[#38BDF8]">
-            VizEdge Software Solution
-          </p>
+        <div className="relative grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14">
+          <div className="min-w-0">
+            <p className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+              JR_VizEdge
+            </p>
 
-          <h1 className="max-w-4xl text-2xl font-black leading-tight text-[#0F172A] sm:text-5xl lg:text-5xl xl:text-4xl dark:text-[#F8FBFF]">
-            Custom software development services for growing businesses.
-          </h1>
+            <h1 className="mt-6 max-w-3xl text-4xl font-black leading-[1.02] tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-6xl">
+              Modern digital systems for businesses that want clarity and traction.
+            </h1>
 
-          <p className="mt-6 max-w-3xl text-base font-medium leading-8 text-[#0F172A]/70 md:text-lg lg:text-xl dark:text-white/70">
-            We build CRM software, HRM software, smart inventory systems,
-            desktop applications, web applications, Odoo ERP solutions, and
-            Power BI dashboards for companies that want better control over
-            their operations.
-          </p>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+              We design websites, custom software, and Odoo solutions that help teams work better, look more credible, and grow with confidence.
+            </p>
 
-          <div className="mt-8 flex flex-wrap gap-3" aria-label="Main services">
-            {serviceLinks.map((service) => (
-              <Link
-                key={service}
-                to="/services"
-                className="border border-[#0F172A]/10 px-4 py-2 text-sm font-extrabold text-[#0F172A] transition-colors hover:border-[#2563EB] hover:text-[#2563EB] dark:border-white/10 dark:text-white dark:hover:border-[#38BDF8] dark:hover:text-[#38BDF8]"
-              >
-                {service}
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              to="/contact"
-              className="bg-[#2563EB] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#FFFFFF] shadow-xl shadow-[#2563EB]/25 transition-colors hover:bg-[#0F172A] sm:px-8 sm:py-5 dark:hover:bg-[#38BDF8] dark:hover:text-[#0F172A]"
-            >
-              Get Free Consultation <span className="ml-2 text-[#38BDF8]">→</span>
-            </Link>
-            <Link
-              to="/services"
-              className="border border-[#0F172A]/15 px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#0F172A] transition-colors hover:border-[#38BDF8] hover:text-[#2563EB] sm:px-8 sm:py-5 dark:border-white/15 dark:text-white dark:hover:text-[#38BDF8]"
-            >
-              Explore Services
-            </Link>
-          </div>
-
-          <div className="mt-12 grid max-w-xl gap-3 sm:grid-cols-3">
-            {heroStats.map((stat) => (
-              <div
-                key={stat.value}
-                className="border-l-4 border-[#38BDF8] bg-[#F8FBFF] px-2 py-2 dark:bg-[#0B1A2D]"
-              >
-                <p className="text-2xl font-black text-[#0F172A] dark:text-white">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-sm font-bold leading-5 text-[#0F172A]/60 dark:text-white/60">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <aside className="relative z-10" aria-label="VizEdge software dashboard preview">
-          <div className="border border-[#0F172A]/10 bg-[#FFFFFF] p-3 shadow-2xl shadow-[#0F172A]/15 transition-colors sm:p-4 lg:scale-[1.03] dark:border-white/10 dark:bg-[#10233A] dark:shadow-[#38BDF8]/10">
-            <div className="bg-[#0F172A] bg-[radial-gradient(circle_at_1px_1px,rgba(56,189,248,0.24)_1px,transparent_0)] [background-size:22px_22px] p-5 text-[#FFFFFF] sm:p-7 lg:p-8 dark:bg-[#07111F]">
-              <div className="flex items-start justify-between gap-6 border-b border-white/10 pb-7">
-                <div>
-                  <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-[#38BDF8]">
-                    Company Dashboard
-                  </p>
-                  <h2 className="mt-3 text-3xl font-black leading-tight text-[#FFFFFF] sm:text-4xl">
-                    Sales, staff, stock, and reports in one system.
-                  </h2>
-                </div>
-                <span className="bg-[#38BDF8] px-3 py-2 text-xs font-black text-[#0F172A]">
-                  Live
+            <div className="mt-8 flex flex-wrap gap-3" aria-label="Core services">
+              {serviceHighlights.map((item) => (
+                <span key={item} className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700 shadow-sm">
+                  {item}
                 </span>
-              </div>
+              ))}
+            </div>
 
-              <div className="mt-7 grid gap-4 sm:grid-cols-2">
-                <div className="bg-white/10 p-5 sm:p-6">
-                  <p className="text-sm font-bold text-white/60">CRM Leads</p>
-                  <p className="mt-3 text-4xl font-black">286</p>
-                  <p className="mt-2 text-sm font-bold text-[#38BDF8]">
-                    Sales pipeline ready
-                  </p>
-                </div>
-                <div className="bg-white/10 p-5 sm:p-6">
-                  <p className="text-sm font-bold text-white/60">Inventory Alerts</p>
-                  <p className="mt-3 text-4xl font-black">12</p>
-                  <p className="mt-2 text-sm font-bold text-[#38BDF8]">
-                    Auto tracked
-                  </p>
-                </div>
-              </div>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link to="/contact" className="primary-button bg-[#0f172a] text-white hover:bg-[#2563eb]">
+                Start a Project
+              </Link>
+              <Link to="/contact" className="secondary-button">
+                Talk to Us
+              </Link>
+            </div>
 
-              <div className="mt-5 bg-[#FFFFFF] p-5 text-[#0F172A] sm:p-6 dark:bg-[#0B1A2D] dark:text-white">
-                <div className="flex items-center justify-between gap-6">
+            <div className="mt-10 grid max-w-xl gap-4 sm:grid-cols-3">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">01</p>
+                <p className="mt-3 text-lg font-black text-slate-900">Business-first</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">02</p>
+                <p className="mt-3 text-lg font-black text-slate-900">Built for growth</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">03</p>
+                <p className="mt-3 text-lg font-black text-slate-900">Reliable delivery</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-xl min-w-0">
+            <div className="absolute left-2 top-8 hidden rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 shadow-lg backdrop-blur-sm sm:block">
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Strategy</p>
+              <p className="mt-2 text-base font-black text-slate-900">Business systems</p>
+            </div>
+
+            <div className="absolute right-2 bottom-6 hidden rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 shadow-lg sm:block">
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-sky-700">Delivery</p>
+              <p className="mt-2 text-base font-black text-slate-900">On schedule</p>
+            </div>
+
+            <div className="relative rounded-[32px] border border-slate-200 bg-slate-50 p-4 shadow-[0_30px_80px_rgba(15,23,42,0.08)] sm:p-6">
+              <div className="rounded-[28px] border border-slate-200 bg-white p-5 sm:p-6">
+                <div className="flex items-center justify-between gap-4 border-b border-slate-200 pb-4">
                   <div>
-                    <p className="text-sm font-black uppercase tracking-[0.16em] text-[#2563EB] dark:text-[#38BDF8]">
-                      Power BI Analytics
-                    </p>
-                    <h3 className="mt-2 text-2xl font-black dark:text-white">
-                      Monthly Business Performance
-                    </h3>
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">JR_VizEdge</p>
+                    <h2 className="mt-3 text-2xl font-black text-slate-900 sm:text-[2rem]">Project overview</h2>
                   </div>
-                  <span className="bg-[#2563EB] px-3 py-2 text-xs font-black text-white">
-                    BI
-                  </span>
+                  <span className="rounded-full bg-sky-500 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white">Live</span>
                 </div>
 
-                <div className="mt-7 flex h-40 items-end gap-3">
-                  {[45, 70, 52, 88, 64, 96, 78].map((height, index) => (
-                    <div
-                      key={`${height}-${index}`}
-                      className="flex-1 bg-[#2563EB]"
-                      style={{
-                        height: `${height}%`,
-                        opacity: 0.45 + index * 0.08,
-                      }}
-                    />
-                  ))}
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-100 p-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Website</p>
+                    <p className="mt-4 text-3xl font-black text-slate-900">Business</p>
+                    <p className="mt-2 text-sm text-sky-700">Professional presence</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200 bg-slate-100 p-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Software</p>
+                    <p className="mt-4 text-3xl font-black text-slate-900">Custom</p>
+                    <p className="mt-2 text-sm text-sky-700">Workflow-first</p>
+                  </div>
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-slate-900">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-blue-700">Workflow</p>
+                      <h3 className="mt-2 text-xl font-black">Delivery overview</h3>
+                    </div>
+                    <span className="rounded-full bg-blue-100 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-blue-700">Status</span>
+                  </div>
+
+                  <div className="mt-5 space-y-3">
+                    {[
+                      { label: 'Discovery', width: '92%' },
+                      { label: 'Design', width: '78%' },
+                      { label: 'Build', width: '84%' },
+                    ].map((item) => (
+                      <div key={item.label}>
+                        <div className="mb-1 flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                          <span>{item.label}</span>
+                          <span>{item.width}</span>
+                        </div>
+                        <div className="h-2.5 rounded-full bg-slate-200">
+                          <div className="h-full rounded-full bg-gradient-to-r from-blue-600 to-sky-400" style={{ width: item.width }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </aside>
+        </div>
       </section>
 
-      <section className="border-y border-[#0F172A]/10 bg-[#F8FBFF] px-6 py-20 transition-colors dark:border-white/10 dark:bg-[#07111F]">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-slate-50 py-20">
+        <div className="section-shell">
           <div className="max-w-3xl">
-            <p className="mb-4 text-sm font-extrabold uppercase tracking-[0.24em] text-[#2563EB] dark:text-[#38BDF8]">
-              Service Section
-            </p>
-            <h2 className="text-4xl font-black leading-tight text-[#0F172A] md:text-5xl dark:text-white">
-              Software services your company can actually use every day.
-            </h2>
+            <p className="text-sm font-black uppercase tracking-[0.26em] text-blue-700">What we do</p>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Digital solutions for businesses that need clarity and performance.</h2>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {services.map((service) => (
-              <article
-                key={service.title}
-                className="border border-[#0F172A]/10 bg-[#FFFFFF] p-7 shadow-sm transition-all hover:-translate-y-1 hover:border-[#2563EB]/40 hover:shadow-xl hover:shadow-[#2563EB]/10 dark:border-white/10 dark:bg-[#0B1A2D] dark:hover:border-[#38BDF8]/40 dark:hover:shadow-[#38BDF8]/10"
-              >
-                <div className="mb-6 h-1 w-14 bg-[#38BDF8]" />
-                <h3 className="text-2xl font-black text-[#0F172A] dark:text-white">
-                  {service.title}
-                </h3>
-                <p className="mt-4 text-base font-medium leading-7 text-[#0F172A]/70 dark:text-white/70">
-                  {service.description}
-                </p>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {serviceCards.map((service) => (
+              <article key={service.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-xl">
+                <div className="mb-5 h-1 w-12 rounded-full bg-sky-400" />
+                <h3 className="text-2xl font-black text-slate-900">{service.title}</h3>
+                <p className="mt-4 text-base leading-7 text-slate-600">{service.description}</p>
+                <ul className="mt-6 space-y-3 text-sm font-semibold text-slate-700">
+                  {service.points.map((point) => (
+                    <li key={point} className="flex items-center gap-3">
+                      <span className="h-2 w-2 rounded-full bg-blue-600" aria-hidden="true" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+      <section className="section-shell py-20">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="mb-4 text-sm font-extrabold uppercase tracking-[0.24em] text-[#2563EB] dark:text-[#38BDF8]">
-              Project Showcase
-            </p>
-            <h2 className="text-4xl font-black leading-tight text-[#0F172A] md:text-5xl dark:text-white">
-              Business systems shaped around real company operations.
-            </h2>
-          </div>
-          <p className="max-w-2xl text-lg font-medium leading-8 text-[#0F172A]/70 dark:text-white/70">
-            These examples show the type of structured products VizEdge builds:
-            CRM pipelines, inventory control, reporting dashboards, and custom
-            software that keeps daily work organized.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {showcaseProjects.map((project) => (
-            <article
-              key={project.title}
-              className="border border-[#0F172A]/10 bg-[#FFFFFF] p-7 shadow-sm transition-colors hover:border-[#2563EB]/40 dark:border-white/10 dark:bg-[#0B1A2D] dark:hover:border-[#38BDF8]/40"
-            >
-              <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-[#38BDF8]">
-                {project.category}
-              </p>
-              <div className="mt-6 flex items-end justify-between gap-4 border-b border-[#0F172A]/10 pb-6 dark:border-white/10">
-                <h3 className="text-2xl font-black leading-tight text-[#0F172A] dark:text-white">
-                  {project.title}
-                </h3>
-                <div className="text-right">
-                  <p className="text-4xl font-black text-[#2563EB] dark:text-[#38BDF8]">
-                    {project.metric}
-                  </p>
-                  <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#0F172A]/55 dark:text-white/55">
-                    {project.label}
-                  </p>
-                </div>
-              </div>
-              <p className="mt-5 text-base font-medium leading-7 text-[#0F172A]/70 dark:text-white/70">
-                {project.description}
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-t border-[#0F172A]/10 bg-[#F8FBFF] px-6 py-20 transition-colors dark:border-white/10 dark:bg-[#07111F]">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <p className="mb-4 text-sm font-extrabold uppercase tracking-[0.24em] text-[#2563EB] dark:text-[#38BDF8]">
-              About Company
-            </p>
-            <h2 className="text-4xl font-black leading-tight text-[#0F172A] md:text-5xl dark:text-white">
-              Work ethics that keep software practical, honest, and useful.
-            </h2>
-            <p className="mt-6 text-lg font-medium leading-8 text-[#0F172A]/70 dark:text-white/70">
-              VizEdge Software Solution focuses on business-first development.
-              We listen carefully, map your process, build clean systems, and
-              support the product after launch so your company can keep moving.
-            </p>
-            <Link
-              to="/about"
-              className="mt-8 inline-flex bg-[#2563EB] px-7 py-4 text-sm font-extrabold uppercase tracking-[0.14em] text-[#FFFFFF] shadow-lg shadow-[#2563EB]/20 transition-colors hover:bg-[#0F172A] dark:hover:bg-[#38BDF8] dark:hover:text-[#0F172A]"
-            >
-              Know VizEdge <span className="ml-2 text-[#38BDF8]">→</span>
-            </Link>
+            <p className="text-sm font-black uppercase tracking-[0.26em] text-blue-700">Why JR_VizEdge</p>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">A practical, business-first approach to digital projects.</h2>
           </div>
 
-          <div className="grid gap-4">
-            {workEthics.map((item) => (
-              <article
-                key={item.title}
-                className="border border-[#0F172A]/10 bg-[#FFFFFF] p-6 shadow-sm dark:border-white/10 dark:bg-[#0B1A2D]"
-              >
-                <span className="mb-5 block h-2 w-12 bg-[#38BDF8]" />
-                <h3 className="text-2xl font-black text-[#0F172A] dark:text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-base font-medium leading-7 text-[#0F172A]/70 dark:text-white/70">
-                  {item.description}
-                </p>
+          <div className="grid gap-5">
+            {process.map((item) => (
+              <article key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-600">Step</p>
+                <h3 className="mt-3 text-2xl font-black text-slate-900">{item.title}</h3>
+                <p className="mt-3 text-base leading-7 text-slate-600">{item.description}</p>
               </article>
             ))}
           </div>
