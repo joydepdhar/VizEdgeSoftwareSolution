@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import logo from '../assets/Profile_Logo.png'
 
 const navLinks = [
   { to: '/', label: 'Home', end: true },
@@ -28,9 +27,16 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Primary navigation">
-        <NavLink to="/" className="flex items-center gap-3 text-lg font-black tracking-tight text-slate-900" onClick={() => setIsMenuOpen(false)}>
-          <img src={logo} alt="JR_VizEdge logo" className="h-9 w-9 object-contain" />
-          <span>JR_VizEdge</span>
+        <NavLink to="/" aria-label="JR_VizEdge home" className="flex min-w-0 shrink-0 items-center gap-2.5" onClick={() => setIsMenuOpen(false)}>
+          <img
+            src="/jr-icon-mark.png"
+            alt=""
+            aria-hidden="true"
+            className="h-9 w-auto shrink-0 object-contain sm:h-10 md:h-11 lg:h-12"
+          />
+          <span className="whitespace-nowrap text-lg font-semibold tracking-[0.02em] text-[#0f172a] sm:text-xl">
+            JR<span className="text-[#2563eb]">_</span>VizEdge
+          </span>
         </NavLink>
 
         <div className="hidden items-center gap-8 md:flex">
